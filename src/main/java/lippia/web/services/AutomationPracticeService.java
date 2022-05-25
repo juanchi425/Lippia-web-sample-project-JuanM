@@ -2,26 +2,57 @@ package lippia.web.services;
 
 import com.crowdar.core.PropertyManager;
 import com.crowdar.core.actions.ActionManager;
-import com.crowdar.driver.DriverManager;
-import lippia.web.constants.GoogleConstants;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.Assert;
+
+import  org.testng.Assert;
+import static lippia.web.constants.AutomationPracticeConstants.*;
 
 import static com.crowdar.core.actions.WebActionManager.navigateTo;
 
-public class GoogleHomeService extends ActionManager {
+
+public class AutomationPracticeService extends ActionManager {
 
     public static void navegarWeb(){
         navigateTo(PropertyManager.getProperty("web.base.url"));
     }
 
-    public static void enterSearchCriteria(String text) {
-        setInput(GoogleConstants.INPUT_SEARCH_XPATH, text);
+    public static void clickMyAccount(){
+        click(BTN_MYACCOUNT_ID);
+    }
+    public static void completarUsername(String username){
+        setInput(INPUT_USERNAME_ID,username);
+    }
+    public static void completarPassword(String password){
+        setInput(INPUT_PASSWORD_ID,password);
+    }
+    public static void clickLoginBtn(){
+        click(BTN_LOGIN_XPATH);
+    }
+    public static void verificarLogin(){Assert.assertTrue(isVisible(BTN_LOGOUT_XPATH));}
+
+    //SEGUNDO TEST
+
+    public static void clickShop(){
+           click(BTN_SHOP_ID);
+    }
+    public static void clickProductSelenium(){
+        click(PRODUT_SELENIUM_CLASS);
+    }
+    public static void verificaProduct(){
+        Assert.assertTrue(isVisible(TEXT_SELENIUM_CLASS));
     }
 
-    public static void clickSearchButton() {
-        click(GoogleConstants.SEARCH_BUTTON_NAME);
+
+    //TERCER TEST
+
+    public static void  clickMenuDesplegable(){
+        click(BTN_DESPLEGABLE_CLASS);
     }
+    public static void clickOptionPopulary(){
+        click(BTN_OPTION_POPULARITY_XPATH);
+    }
+    public static void verificarProductPopulares(){
+        Assert.assertTrue(isVisible(PRODUT_SELENIUM_CLASS));
+    }
+
+
 }
